@@ -1,12 +1,11 @@
 <script>
+	import Cookies from 'js-cookie';
 	import { goto } from '$app/navigation';
 	import { Container } from '@sveltestrap/sveltestrap';
 	import { onMount } from 'svelte';
 
 	onMount(() => {
-		const token = localStorage.getItem('sb-access-token');
-
-		if (!token) {
+		if (!Cookies.get('sb_session')) {
 			goto('/login');
 		}
 	});
