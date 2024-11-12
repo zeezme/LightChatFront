@@ -10,6 +10,7 @@
 	export let storage: Storage<Record<any, any>>;
 	export let placeholder: string = '';
 	export let type: InputType = 'text';
+	export let showSpinner: boolean = false;
 
 	let inputValue: string = '';
 
@@ -24,7 +25,7 @@
 
 <div class="input-wrapper">
 	<Input {type} {placeholder} bind:value={inputValue} />
-	{#if $LoadingStorage.isLoading}
+	{#if $LoadingStorage.isLoading && showSpinner}
 		<div class="spinner-container">
 			<Spinner size="sm" />
 		</div>

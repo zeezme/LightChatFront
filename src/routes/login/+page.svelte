@@ -1,10 +1,11 @@
 <script lang="ts">
+	import { LoadingStorage } from './../../lib/components/loading/LoadingStorage';
 	import Cookies from 'js-cookie';
 	import { ToastType } from './../../lib/components/toasts/toastsStorage';
 	import Input from '$lib/components/inputs/Input.svelte';
 	import { addToast } from '$lib/components/toasts/toastsStorage';
 	import AuthService from '$lib/services/Auth';
-	import { Card, CardBody, Container, Form, Icon, Row } from '@sveltestrap/sveltestrap';
+	import { Card, CardBody, Container, Form, Icon, Row, Spinner } from '@sveltestrap/sveltestrap';
 	import { loginStorage } from './loginStorage';
 	import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
@@ -53,9 +54,10 @@
 	};
 </script>
 
-<Container fluid class="d-flex justify-content-center align-items-center h-100">
-	<div class="d-flex flex-row">
-		<Card>
+<Container fluid class="d-flex flex-column justify-content-center align-items-center h-100">
+	<h1 class="text-center mb-5">LightChat</h1>
+	<div class="d-flex flex-column">
+		<Card class="mb-3">
 			<CardBody>
 				<form class="container" on:submit={handleSubmit}>
 					<Row>
@@ -72,7 +74,6 @@
 		<Card
 			class="d-flex justify-content-center align-items-center"
 			style="
-				width: 120px;
 				background-position: 100% 0;
 				transition: background-position 0.4s ease;
 			"
@@ -81,10 +82,10 @@
 				role="button"
 				tabindex="0"
 				on:mouseenter={() => {
-					get(iconName) === 'lock-fill' ? iconName.set('unlock-fill') : iconName.set('lock-fill');
+					get(iconName) === 'unlock-fill' ? iconName.set('lock-fill') : iconName.set('unlock-fill');
 				}}
 				on:mouseleave={() => {
-					get(iconName) === 'lock-fill' ? iconName.set('unlock-fill') : iconName.set('lock-fill');
+					get(iconName) === 'unlock-fill' ? iconName.set('lock-fill') : iconName.set('unlock-fill');
 				}}
 			>
 				<CardBody>
@@ -94,7 +95,11 @@
 						disabled={!$loginStorage.username || !$loginStorage.password}
 						on:click={handleSubmit}
 					>
-						<Icon name={$iconName} style="font-size: 50px" />
+						{#if $LoadingStorage.isLoading}
+							<Spinner />
+						{:else}
+							Entrar <Icon name={$iconName} style="font-size: 20px" />
+						{/if}
 					</button>
 				</CardBody>
 			</div>
