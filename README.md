@@ -2,6 +2,9 @@
 
 LightChat é um projeto que visa facilitar o atendimento de pequenos e grandes negócios. O projeto é totalmente baseado no modelo de "Conversa de Utilidade", onde o cliente toma a iniciativa de entrar em contato com o estabelecimento. Com essa abordagem, a plataforma pode operar sem necessariamente gerar custos operacionais relacionados ao licenciamento da API oficial do WhatsApp.
 
+![Status: Early Development](https://img.shields.io/badge/Status-Early_Development-blue)
+![Fase: Criando Estrutura](https://img.shields.io/badge/Fase-Criando_Estrutura-green)
+
 ## O que já foi implementado
 
 ### Gerenciamento de Estado
