@@ -1,38 +1,47 @@
-# sv
+# LightChat
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+LightChat é um projeto que visa facilitar o atendimento de pequenos e grandes negócios. O projeto é totalmente baseado no modelo de "Conversa de Utilidade", onde o cliente toma a iniciativa de entrar em contato com o estabelecimento. Com essa abordagem, a plataforma pode operar sem necessariamente gerar custos operacionais relacionados ao licenciamento da API oficial do WhatsApp.
 
-## Creating a project
+# O que já foi implementado
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Gerenciamento de Estado
+- **Classe de Gerenciamento de Estado Reativo**: Deve ser criado um arquivo chamado `storage.ts` na pasta do módulo(tela)
+  - A classe de gerenciamento de estado deve ser instanciada, inicializada e exportada.
+  - O objeto exportado permite alterar e obter o estado de forma centralizada.
+- **Input Padrão**: Componente reutilizável que recebe o objeto do gerenciamento de estado da tela e lida com a inserção de dados.
 
-```bash
-# create a new project in the current directory
-npx sv create
+## Autenticação e Login
+- **Tela de Login**: Interface conectada ao Supabase para autenticação e validação de usuários.
+- **Helper de Login**: Conjunto de funções que facilitam o gerenciamento de sessões:
+  - `signIn`: Autentica o usuário.
+  - `signOut`: Finaliza a sessão.
+  - `getUser`: Recupera informações do usuário autenticado.
 
-# create a new project in my-app
-npx sv create my-app
-```
+## UX
+- **Sistema de Toasts**: Sistema de notificação com storage próprio, funciona por cima do resto dos componentes.
+- **Loading**: Componente de loading com storage próprio. Basta chamar:
+  - `Loading.start()`: Inicia o carregamento.
+  - `Loading.stop()`: Para o carregamento.
+  - `Loading.get()`: Recupera o estado atual do carregamento.
 
-## Developing
+## Style Padrão
+- **Troca de Tema**: Botão no layout principal para alternar entre os temas claro e escuro.
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+---
 
-```bash
-npm run dev
+### Tecnologias Utilizadas
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+- **Svelte**: Framework para construção da interface.
+- **Supabase**: Backend-as-a-Service para autenticação e gerenciamento de usuários.
+- **Whatsapp Business API**: API oficial do whatsapp.
 
-## Building
+---
 
-To create a production version of your app:
+### Próximos Passos
 
-```bash
-npm run build
-```
+- [ ] Finalizar a implementação do login empresarial do Facebook.
+- [ ] Implementar a integração completa com a API do WhatsApp.
 
-You can preview the production build with `npm run preview`.
+---
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+Contribuições e sugestões são bem-vindas!
